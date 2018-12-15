@@ -1,6 +1,7 @@
 package cn.learn.cacheavalanche;
 
 import cn.learn.cacheavalanche.service.TicketService;
+import cn.learn.cacheavalanche.service.TicketService2;
 import java.util.concurrent.CountDownLatch;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,9 @@ public class CacheAvalancheApplicationTests {
 
   @Autowired
   private TicketService ticketService;
+
+  @Autowired
+  private TicketService2 ticketService2;
 
   private static final String TICKET_SEQ = "G296";
   private static final int THREAD_NUM = 1000;
