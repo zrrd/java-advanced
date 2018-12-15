@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    password: 123456
+    username: root
+    url: jdbc:mysql://47.99.73.15:3306/learn?useUnicode=true&characterEncoding=utf-8&useSSL=false
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 12
+    # Redis服务器地址
+    host: 47.99.73.15
+    # Redis服务器连接端口
+    port: 6379
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+

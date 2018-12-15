@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+cache-avalanche/.mvn/
+cache-avalanche/mvnw
+cache-avalanche/mvnw.cmd
+javahigher.iml
