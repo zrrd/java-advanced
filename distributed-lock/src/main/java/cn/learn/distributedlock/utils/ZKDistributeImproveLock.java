@@ -11,7 +11,7 @@ import org.I0Itec.zkclient.ZkClient;
 import org.I0Itec.zkclient.exception.ZkNodeExistsException;
 
 /**
- * 基于Zookeeper实现分布式锁. 改进版
+ * 基于Zookeeper实现分布式锁. 改进版 顺序加锁  顺序解锁
  *
  * @author shaoyijiong
  * @date 2018/12/18
@@ -23,9 +23,15 @@ public class ZKDistributeImproveLock implements Lock {
 
   private String lockPath;
   private ZkClient client;
+  /**
+   * 为每个进程创建一个threadLocal 进程直接互相不干扰
+   */
   private ThreadLocal<String> currentPath = new ThreadLocal<>();
   private ThreadLocal<String> beforePath = new ThreadLocal<>();
 
+  /**
+   * 需要创建一个父节点  后面的顺序节点都依赖该节点
+   */
   public ZKDistributeImproveLock(String lockPath) {
     super();
     this.lockPath = lockPath;
@@ -70,6 +76,7 @@ public class ZKDistributeImproveLock implements Lock {
         countDownLatch.countDown();
       }
     };
+    //监听本节点之前的节点   前面的节点被删除了  相当于获得锁了
     client.subscribeDataChanges(beforePath.get(), listener);
     if (client.exists(beforePath.get())) {
       try {
@@ -95,13 +102,14 @@ public class ZKDistributeImproveLock implements Lock {
     // 0001 0002 类似的
     List<String> children = client.getChildren(lockPath);
     Collections.sort(children);
-    //判断当前节点是最小的节点
+    //判断当前节点是最小的节点  如果是最小的节点 直接获得锁
     if (currentPath.get().equals(lockPath + "/" + children.get(0))) {
       return true;
     } else {
       //取前一个
       //取得字节的索引号                      去除父路径
       int curIndex = children.indexOf(currentPath.get().substring(lockPath.length() + 1));
+      //得到当前节点的前面一个节点
       beforePath.set(lockPath + "/" + children.get(curIndex - 1));
     }
     return false;
