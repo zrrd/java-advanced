@@ -1,24 +1,15 @@
 package cn.learn.distributedlock;
 
 import cn.learn.distributedlock.service.OrderService;
-import cn.learn.distributedlock.service.OrderServiceImplWithLock;
+import cn.learn.distributedlock.service.OrderServiceZKLockImpl;
+import cn.learn.distributedlock.utils.OrderCodeGenerator;
 import java.util.concurrent.CountDownLatch;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class DistributedLockApplicationTests {
+  private OrderService orderService = new OrderServiceZKLockImpl();
 
-  @Qualifier("orderServiceImplWithLock")
-  @Autowired
-  private OrderService orderService;
-
-  private static final int THREAD_NUM = 1000;
+  private static final int THREAD_NUM = 100;
   private CountDownLatch countDownLatch = new CountDownLatch(THREAD_NUM);
 
   @Test
@@ -54,12 +45,13 @@ public class DistributedLockApplicationTests {
    */
   @Test
   public void getCode2() throws InterruptedException {
+    OrderCodeGenerator codeGenerator = new OrderCodeGenerator();
     Thread[] threads = new Thread[THREAD_NUM];
 
     for (int i = 0; i < THREAD_NUM; i++) {
       Thread thread = new Thread(()->{
         //每个线程创建单独的实力  相当于20个tomcat
-        OrderService orderService = new OrderServiceImplWithLock();
+        OrderService orderService = new OrderServiceZKLockImpl();
         try {
           countDownLatch.await();
         } catch (InterruptedException e) {
