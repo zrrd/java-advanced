@@ -12,5 +12,6 @@
   <modules>
     <module>cache-avalanche</module>
     <module>distributed-lock</module>
+    <module>flash-sale</module>
   </modules>
 </project>
