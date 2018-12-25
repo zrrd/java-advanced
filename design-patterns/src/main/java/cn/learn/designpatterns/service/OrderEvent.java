@@ -8,9 +8,9 @@ import org.springframework.context.ApplicationEvent;
  * @author shaoyijiong
  * @date 2018/12/24
  */
-public class OrderEvent extends ApplicationEvent {
+class OrderEvent extends ApplicationEvent {
 
-  public OrderEvent(Object source) {
+  OrderEvent(Object source) {
     super(source);
   }
 }

@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderService {
 
+  @Autowired
+  public OrderService(ApplicationContext applicationContext) {
+    this.applicationContext = applicationContext;
+  }
+
   /**
    * 伪代码
    */
@@ -26,10 +31,11 @@ public class OrderService {
   }
 
 
-  @Autowired
-  private ApplicationContext applicationContext;
+  private final ApplicationContext applicationContext;
 
   public void saveOrder2() {
+    System.out.println("1. 创建订单");
+    //发出一个订单创建事件 (spring 内部原理，同步模式->循环调用监听，异步多线程模式)
     applicationContext.publishEvent(new OrderEvent(""));
   }
 }

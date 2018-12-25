@@ -22,5 +22,10 @@ public class DesignPatternsApplicationTests {
   public void test01() {
     orderService.saveOrder();
   }
+
+  @Test
+  public void test02() {
+    orderService.saveOrder2();
+  }
 }
 
