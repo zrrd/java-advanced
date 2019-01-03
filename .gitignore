@@ -5,3 +5,8 @@ cache-avalanche/.mvn/
 cache-avalanche/mvnw
 cache-avalanche/mvnw.cmd
 javahigher.iml
+.mvn/
+mvnw
+mvnw.cmd
+src/main/resources/static/
+src/main/resources/templates/
