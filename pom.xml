@@ -15,5 +15,6 @@
     <module>flash-sale</module>
     <module>design-patterns</module>
     <module>distributed-transaction</module>
+    <module>volatile</module>
   </modules>
 </project>
