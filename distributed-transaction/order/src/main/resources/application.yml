@@ -7,5 +7,5 @@ spring:
     host: 47.99.73.15
     username: guest
     password: guest
-    #\u5F00\u542F\u53D1\u5E03\u786E\u8BA4\u673A\u5236
+    #消息发送成功后 ack确认
     publisher-confirms: true
