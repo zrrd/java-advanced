@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button id="getData">调用接口数据</button>
+<span id="result"></span>
+
+<button id="login">登陆</button>
+</body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+<script>
+    $(function () {
+        $("#getData").click(function () {
+            //var token = $("#token").html();
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/user/list",
+                dataType: "json",
+                complete: function (XMLHttpRequest, textStatus) {
+                    $("#result").html(XMLHttpRequest.responseText.toString());
+                }
+            })
+        });
+        $("#login").click(function () {
+            var result = $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/user/login?name=aa&&password=123",
+                dataType: "json",
+                async: false
+            });
+            $.cookie("token", result.responseText.toString());
+        })
+    })
+</script>
+</html>
