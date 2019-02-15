@@ -33,6 +33,9 @@ public class UserController {
     }
   }
 
+  /**
+   * 登陆 并且获得jwt
+   */
   @GetMapping("login")
   public String login(String name, String password) {
     if ("aa".equals(name) && "123".equals(password)) {
