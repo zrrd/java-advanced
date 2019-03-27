@@ -13,3 +13,7 @@
 > 前后端分离
 #### 7. java-thread
 >  java线程的
+#### 8. volatile
+> volatile 关键字的使用
+#### 9. simple-mq
+> 自己设计一个简单的mq系统

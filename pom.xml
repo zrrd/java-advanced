@@ -24,5 +24,6 @@
     <module>distributed-transaction</module>
     <module>volatile</module>
     <module>java-thread</module>
+    <module>simple-mq</module>
   </modules>
 </project>
