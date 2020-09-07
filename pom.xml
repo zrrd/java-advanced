@@ -2,28 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.1.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.8.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-  <groupId>cn.learn</groupId>
-  <artifactId>javahigher</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <groupId>cn.learn</groupId>
+    <artifactId>javahigher</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <modules>
-    <module>cache-avalanche</module>
-    <module>distributed-lock</module>
-    <module>flash-sale</module>
-    <module>design-patterns</module>
-    <module>distributed-transaction</module>
-    <module>volatile</module>
-    <module>java-thread</module>
-    <module>simple-mq</module>
-  </modules>
+    <modules>
+        <module>cache-avalanche</module>
+        <module>design-patterns</module>
+        <module>distributed-lock</module>
+        <module>distributed-transaction</module>
+        <module>flash-sale</module>
+        <module>front-backend</module>
+        <module>java-thread</module>
+        <module>simple-mq</module>
+        <module>volatile</module>
+    </modules>
 </project>
